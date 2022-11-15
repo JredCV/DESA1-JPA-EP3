@@ -10,11 +10,10 @@ import java.util.List;
 @Service
 public class ClienteService {
 
-
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public void add(Cliente cliente){
+    public void addCliente(Cliente cliente){
         clienteRepository.save(cliente);
     }
     public Cliente findByEmail(String email){
@@ -22,10 +21,10 @@ public class ClienteService {
     }
 
     public List<Cliente> getByCiudad(Long idCiudad){
-return clienteRepository.findClienteByCiudad(idCiudad);
+        return null;
     }
 
     public List<Cliente> getByPais(Long idPais){
-        return clienteRepository.findClienteByPais(idPais);
+        return null;
     }
 }

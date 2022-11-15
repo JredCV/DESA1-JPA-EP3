@@ -1,7 +1,7 @@
 package pe.isil.springdatajpademo.controller;
 
-    import pe.isil.springdatajpademo.entity.Cliente;
-    import pe.isil.springdatajpademo.service.ClienteService;
+import pe.isil.springdatajpademo.entity.Cliente;
+import pe.isil.springdatajpademo.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +13,11 @@ public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
+
+    @PostMapping("/add")
+    public void addCliente(@RequestBody  Cliente cliente){
+        clienteService.addCliente(cliente);
+    }
 
     @GetMapping("/getbyemail")
     public Cliente getByEmail(@RequestParam String email){
