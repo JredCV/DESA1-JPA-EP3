@@ -20,14 +20,19 @@ public class DireccionController {
     public void addDireccion(@RequestBody  Direccion direccion){
         direccionService.addDireccion(direccion);
     }
-    @GetMapping("/getbyciudad")
-    public List<Cliente> getByCiudad(@RequestParam Long idCiudad){
-        return direccionService.getByCiudad(idCiudad);
+
+    @GetMapping("/findall")
+    public List<Direccion> getAllDireccion(){
+        return direccionService.getAllDireccion();
+    }
+   @GetMapping("/getbyciudad")
+    public List<Direccion> getByCiudad(@RequestParam Long id){
+        return direccionService.getByCiudad(id);
     }
 
     @GetMapping("/getbypais")
-    public List<Cliente> getByPais(@RequestParam Long idPais){
-        return direccionService.getByPais(idPais);
+    public List<Direccion> getByPais(@RequestParam Long id){
+        return direccionService.getByPais(id);
     }
 
 

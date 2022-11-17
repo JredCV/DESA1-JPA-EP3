@@ -2,12 +2,12 @@ package pe.isil.springdatajpademo.entity;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "tbl_cliente", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email",name="email_uique")
 })
 public class Cliente {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

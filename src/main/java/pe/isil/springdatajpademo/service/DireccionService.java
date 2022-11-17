@@ -19,11 +19,15 @@ public class DireccionService {
         direccionRepository.save(direccion);
     }
 
-    public List<Cliente> getByCiudad(Long idCiudad){
-        return direccionRepository.findDireccionByCiudad(idCiudad);
+    public List<Direccion> getAllDireccion(){
+        return direccionRepository.findAll();
     }
 
-    public List<Cliente> getByPais(Long idPais){
-        return direccionRepository.findDireccionByPais(idPais);
+    public List<Direccion> getByCiudad(Long id){
+        return direccionRepository.findDireccionByCiudad_Id(id);
+    }
+
+    public List<Direccion> getByPais(Long id){
+        return direccionRepository.findDireccionByPais_Id(id);
     }
 }

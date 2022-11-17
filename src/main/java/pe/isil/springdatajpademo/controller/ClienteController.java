@@ -1,6 +1,7 @@
 package pe.isil.springdatajpademo.controller;
 
 import pe.isil.springdatajpademo.entity.Cliente;
+import pe.isil.springdatajpademo.entity.Direccion;
 import pe.isil.springdatajpademo.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,18 +20,30 @@ public class ClienteController {
         clienteService.addCliente(cliente);
     }
 
+    @GetMapping("/findall")
+    public List<Cliente> getAllCliente(){
+        return clienteService.getAllCliente();
+    }
+
     @GetMapping("/getbyemail")
     public Cliente getByEmail(@RequestParam String email){
         return clienteService.findByEmail(email);
     }
 
-    @GetMapping("/getbyciudad")
-    public List<Cliente> getByCiudad(@RequestParam Long idCiudad){
-        return clienteService.getByCiudad(idCiudad);
+   @GetMapping("/getbyciudad")
+    public List<Cliente> getByCiudad(@RequestParam String ciudad){
+     return clienteService.getByCiudad(ciudad);
+   }
+
+   @GetMapping("/getbypais")
+    public List<Cliente> getByPais(@RequestParam String pais){
+        return clienteService.getByPais(pais);
     }
 
-    @GetMapping("/getbypais")
-    public List<Cliente> getByPais(@RequestParam Long idPais){
-        return clienteService.getByPais(idPais);
+    @PostMapping("/updatecliente")
+    public void updateCliente(@RequestParam String email,
+                               @RequestBody Cliente cliente){
+        clienteService.updateCustomer(cliente,email);
     }
+
 }
