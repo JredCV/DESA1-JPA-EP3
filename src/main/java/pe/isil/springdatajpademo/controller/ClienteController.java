@@ -41,9 +41,14 @@ public class ClienteController {
     }
 
     @PostMapping("/updatecliente")
-    public void updateCliente(@RequestParam String email,
-                               @RequestBody Cliente cliente){
-        clienteService.updateCustomer(cliente,email);
+    public void updateCliente(@RequestBody Cliente cliente,@RequestParam String email){
+        clienteService.updateCustomer(cliente, email);
     }
+
+    @DeleteMapping("/deletecliente")
+    public void deleteCliente(@RequestParam Long id){
+        clienteService.deleteCliente(id);
+    }
+
 
 }

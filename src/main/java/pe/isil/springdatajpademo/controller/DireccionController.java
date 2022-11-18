@@ -35,5 +35,10 @@ public class DireccionController {
         return direccionService.getByPais(id);
     }
 
+    @DeleteMapping("/deletedir")
+    public void deleteDireccion(@RequestParam Long id){
+        direccionService.deleteDir(id);
+    }
+
 
 }

@@ -7,6 +7,7 @@ import pe.isil.springdatajpademo.entity.Direccion;
 import pe.isil.springdatajpademo.repository.DireccionRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -29,5 +30,15 @@ public class DireccionService {
 
     public List<Direccion> getByPais(Long id){
         return direccionRepository.findDireccionByPais_Id(id);
+    }
+
+
+    public void deleteDir(Long id){
+        Optional<Direccion> dirToDelete = direccionRepository.findById(id);
+        if(dirToDelete.isPresent()){
+            direccionRepository.delete(dirToDelete.get());
+        }else{
+            throw new RuntimeException("La direccion no existe");
+        }
     }
 }

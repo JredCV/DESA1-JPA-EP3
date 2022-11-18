@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 public class Direccion {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Id
     private Long id;
 

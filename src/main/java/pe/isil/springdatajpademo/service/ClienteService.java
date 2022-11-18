@@ -8,6 +8,7 @@ import pe.isil.springdatajpademo.repository.ClienteRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -41,18 +42,23 @@ public class ClienteService {
 
         Cliente clienteToUpdate = clienteRepository.findClienteByEmail(email);
 
+
         if(clienteToUpdate!= null){
-            clienteToUpdate.setEmail(cliente.getEmail()!=null?
-                    cliente.getEmail(): clienteToUpdate.getEmail());
-
-
+            clienteToUpdate.setApellido(cliente.getApellido()!=null?
+                    cliente.getApellido(): clienteToUpdate.getApellido());
             clienteToUpdate.setNombre(cliente.getNombre()!=null?
                     cliente.getNombre() : clienteToUpdate.getNombre());
-
-
             clienteToUpdate.setDireccion(cliente.getDireccion()!=null?
                     cliente.getDireccion() : clienteToUpdate.getDireccion());
-            //customerRepository.save(customerToUpdate);
+        }
+    }
+
+    public void deleteCliente(Long id){
+        Optional<Cliente> clienteToDelete = clienteRepository.findById(id);
+        if(clienteToDelete.isPresent()){
+            clienteRepository.delete(clienteToDelete.get());
+        }else{
+            throw new RuntimeException("El cliente no existe");
         }
     }
 
